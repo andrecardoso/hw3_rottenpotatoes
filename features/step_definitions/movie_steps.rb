@@ -24,3 +24,8 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
     step "I #{uncheck}check \"ratings[#{rating}]\""
   end
 end
+
+When /I should see all of the movies/ do
+  movies_shown = all("table#movies tbody tr").count
+  movies_shown.should == Movie.count
+end

@@ -40,4 +40,5 @@ Scenario: no ratings selected
   # see assignment
 
 Scenario: all ratings selected
-  # see assignment
+  Given I check the following ratings: 'PG', 'R', 'PG-13', 'G', 'NC-17'
+  Then I should see all of the movies
