@@ -18,9 +18,9 @@ end
 # Make it easier to express checking or unchecking several boxes at once
 #  "When I uncheck the following ratings: PG, G, R"
 #  "When I check the following ratings: G"
-
 When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|  
-  rating_list.split.each do |rating|
-    step "I #{uncheck} #{rating}"
+  rating_list.split(/,\s*/).each do |rating|
+    rating.gsub!(/'/, "")
+    step "I #{uncheck}check \"ratings[#{rating}]\""
   end
 end
